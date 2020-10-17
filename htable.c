@@ -17,17 +17,8 @@
 htable_t *htable_create(unsigned int capacity)
 {
   struct htable *new_hash = (struct htable *)malloc(sizeof(struct htable));
-  struct lnode **arr = (struct lnode **)malloc(sizeof(struct lnode*) * capacity);
-
-  for(int i = 0; i < capacity; i++){
-    struct lnode *temp_headp = (struct lnode *)malloc(sizeof(struct lnode));
-    (*arr) = temp_headp;
-    arr++;
-  }
   new_hash->arr_capacity = capacity;
-  // printf("new_hash->arr_capacity: %d\n", new_hash->arr_capacity);
   new_hash->size = 0;
-  // binary_num = (int*) malloc(sizeof(int)* (4 * 8));
 }
 // struct lnode *new_node = (struct lnode *)malloc(sizeof(struct lnode));
 // typedef struct htable {
@@ -36,7 +27,8 @@ htable_t *htable_create(unsigned int capacity)
 //   unsigned int arr_capacity; //size of the previous array
 //   unsigned int size; //number of tuples stored in the hash table
 // } htable_t;
-// *headdp = (struct lnode *)malloc(sizeof(struct lnode));
+
+
 // This function is used internally by the hash table to calculate
 // the hashcode for a string with n characters, s[0...n-1]
 //
@@ -46,6 +38,17 @@ htable_t *htable_create(unsigned int capacity)
 unsigned int hashcode(char *s)
 {
   //TODO: Your code here
+  int new_code = 0;
+  for (int i = 0; i < strlen(s); i++){
+    int base = 1;
+    for (int j = 0; j < strlen(s)-(i+1); j++){
+      base *= 31;
+    }
+    // printf("s[%d]: %d\n", i, s[i]);
+    // printf("base: %d\n", base);
+    new_code += s[i] * base;
+  }
+  return new_code;
 }
 
 // This function inserts a key value pair to the hash table.
