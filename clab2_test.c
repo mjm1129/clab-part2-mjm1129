@@ -324,6 +324,6 @@ int main(int argc, char **argv)
 {
   TestStr();
   TestList();
-  // TestHashTable();
+  TestHashTable();
   // TestBonusWordCount();
 }
