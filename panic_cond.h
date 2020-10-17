@@ -19,4 +19,5 @@ panic_cond(int cond, const char *fmt, ...)
 		va_end(args);
 		abort();
 	}
+	// printf("without error\n");
 }

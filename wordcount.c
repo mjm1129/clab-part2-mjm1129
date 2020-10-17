@@ -11,7 +11,7 @@
 
 #define MAXCHAR 500
 
-// read the content of file "fname" into 
+// read the content of file "fname" into
 // a byte array terminated by NULL character.
 // This function internally allocates enough space
 // to store the file data read.
@@ -24,7 +24,7 @@ char *read_file_data(char *fname)
   char *buf = malloc(st.st_size+1);
   assert(buf);
 
-  //read the entire ASCII file content to buf 
+  //read the entire ASCII file content to buf
   int fd = open(fname, O_RDONLY);
   assert(read(fd, buf, st.st_size) == st.st_size);
   close(fd);
@@ -36,15 +36,16 @@ char *read_file_data(char *fname)
   return buf;
 }
 
-// This function compares two tuples pointed to by x and y 
-// based on their corresponding values, returning negative, zero or 
+// This function compares two tuples pointed to by x and y
+// based on their corresponding values, returning negative, zero or
 // positive if one is smaller, equal or larger than the other.
-// This function is to be used by C library function qsort 
+// This function is to be used by C library function qsort
 // (learn what qsort does by typing `man qsort` in the terminal)
 // which is invoked in print_wordcount_stats
 int count_cmp(const void *x, const void *y)
 {
   //TODO: Your code here
+
   return 0;
 }
 
@@ -66,7 +67,7 @@ void print_wordcount_stats(htable_t *ht, int topK)
 int main(int argc, char **argv)
 {
 
-  // getopt is a C library function to parse command line options 
+  // getopt is a C library function to parse command line options
   int c;
   int topK = 10;
   while ((c = getopt(argc, argv, "k:")) != -1) {
@@ -80,7 +81,7 @@ int main(int argc, char **argv)
     }
   }
 
-  // optind is a global variable set by getopt() 
+  // optind is a global variable set by getopt()
 	// it now contains the index of the first arguments
   // that is not an option
 	if (argc - optind < 1) {
